@@ -1,0 +1,21 @@
+# Dataset (too large for GitHub)
+data/creditcard.csv
+*.csv
+
+# Model (optional - can push if small enough)
+# model/*.h5
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
