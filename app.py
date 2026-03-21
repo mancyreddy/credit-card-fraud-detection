@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from tensorflow.keras.models import load_model
+from keras.src.saving import load_model
 from sklearn.preprocessing import StandardScaler
 import os
 
@@ -65,7 +65,7 @@ st.markdown("""
 @st.cache_resource
 def load_fraud_model():
     if os.path.exists("fraud_cnn_model.h5"):
-        return load_model("fraud_cnn_model.h5")
+        return load_model("fraud_cnn_model.h5", compile=False)
     return None
 
 model = load_fraud_model()
