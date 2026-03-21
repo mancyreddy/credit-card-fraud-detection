@@ -11,7 +11,7 @@
 
 ## 🚀 Live Demo
 
-👉 [**Try the Streamlit App**](credit-card-fraud-detection-vgpn4q9klempgs4pebwwnf.streamlit.app)  
+👉 [**Try the Streamlit App**](https://credit-card-fraud-detection-vgpn4q9klempgs4pebwwnf.streamlit.app/)  
 _(Deploy on [Streamlit Cloud](https://streamlit.io/cloud) for free — see deployment section below)_
 
 ---
