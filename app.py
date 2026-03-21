@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-import os
 
 st.set_page_config(page_title="Credit Card Fraud Detector", page_icon="🔍", layout="wide")
 
@@ -24,22 +23,17 @@ st.sidebar.markdown("**Model Info**")
 st.sidebar.markdown("- 3-block Conv1D CNN\n- 100% Test Accuracy\n- FN = 0\n- ROC-AUC ≈ 1.0")
 
 def rule_based_predict(features):
-    """
-    Rule-based fraud detection using the strongest correlated features
-    found during EDA: V3, V14, V17 had strongest negative correlation with fraud.
-    This mimics the CNN's learned patterns.
-    """
-    time_s, v1,v2,v3,v4,v5,v6,v7,v8,v9,v10 = features[0:11]
-    v11,v12,v13,v14,v15,v16,v17,v18,v19,v20 = features[11:21]
-    v21,v22,v23,v24,v25,v26,v27,v28,amount_s = features[21:30]
-
-    score = 0
-    if v3 < -2:   score += 0.35
-    if v14 < -3:  score += 0.35
-    if v17 < -2:  score += 0.20
-    if v10 < -3:  score += 0.10
-    prob = min(score, 0.99)
-    return prob
+    time_s = features[0]
+    v3     = features[3]
+    v10    = features[10]
+    v14    = features[14]
+    v17    = features[17]
+    score  = 0
+    if v3  < -2: score += 0.35
+    if v14 < -3: score += 0.35
+    if v17 < -2: score += 0.20
+    if v10 < -3: score += 0.10
+    return min(score, 0.99)
 
 if mode == "Single Transaction":
     st.subheader("🧾 Enter Transaction Details")
@@ -134,13 +128,3 @@ else:
 
 st.markdown("---")
 st.markdown("<div style='text-align:center;color:#94a3b8;font-size:0.85rem'>Credit Card Fraud Detection · CNN Model · GITAM · Mancy 2023001123</div>", unsafe_allow_html=True)
-```
-
----
-
-**Also update `requirements.txt` to:**
-```
-streamlit
-numpy
-pandas
-scikit-learn
